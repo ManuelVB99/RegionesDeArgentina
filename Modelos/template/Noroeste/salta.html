@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+{% block contenido %}
+<div class="flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="text-bg-dark text-center overflow-hidden" style="border-radius:10px; position: relative; width: 100%; height: 800px">
+    {% for blog in blogsalta %}
+        <div style="padding: 10px">
+            Título: {{blog.titulo}} - Subtítulo: {{blog.subtitulo}} - Autor: {{blog.autor}} - Fecha: {{blog.fecha}}<br>
+            <a href="#" class="btn btn-primary">Leer blog</a>
+            <a href="#" class="btn btn-warning">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+        </div>
+        <br>
+    {% endfor %}
+        <div class="position-absolute bottom-0 start-50 translate-middle-x" style="padding: 20px">
+            <a class="btn btn-success" href="/pages/noroeste/salta/agregarblog/">Agregar blog</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

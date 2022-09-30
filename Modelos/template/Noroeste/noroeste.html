@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+{% block contenido %}
+<div class="flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="border-radius:10px">
+      <div style = "height: 80%; width: 100%; border: 2px">
+          <div>
+            <h1 class="display-5">Salta</h1>
+            <p class="lead">Con su geografía majestuosa que contempla el desierto y la selva aunados por valles y quebradas, la provincia fue baluarte histórico de la independencia argentina..</p>
+            <a class="btn btn-warning" style="background-color: #e3f2fd; border: 2px solid black; border-radius:10px; width: 500px" href="/pages/noroeste/salta/">Ver y crear blogs...</a>
+          </div>
+          <div>
+            <img src="/media/salta.png" vspace="10px" style="width: 80%; height: 698px; border-radius: 21px 21px 0 0;">
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock%}
