@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+{% block contenido %}
+<div class="flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="me-md-3 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden" style="border-radius: 10px; position: relative; height: 800px">
+        <a class="btn btn-secondary" style="width: 150px; position: absolute; right: 5px" href="/pages/noroeste/salta/">Volver</a>
+        <div style="background-color: #e3f2fd; margin: 0px auto;border: 1px solid black; border-radius: 10px; height: 750px; width:50%">
+            <table style="padding: 10px; position: relative; width:30%">
+                <h2 style="padding: 10px; height: 50px">{{blog.titulo}}</h2>
+                <h2 style="padding: 5px; height: 50px">{{blog.subtitulo}}</h2>
+                <h4 style="padding: 30px; height: 220px">{{blog.cuerpo}}</h4><br>
+                <h6 style="color: black">Autor: {{blog.autor}}<br>Fecha: {{blog.fecha}}</h6>
+                <img src="/media/{{img}}" style="width: 300px; height: 280px; border-radius: 21px">
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
