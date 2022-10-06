@@ -21,7 +21,7 @@ def agregarblog(request):
         nuevoblog.save()
         blogsalta = BlogsSalta.objects.all()
         return render(request, "Noroeste/salta.html", {"blogsalta": blogsalta})
-    return render(request, "Noroeste/crud_salta/agregarblog.html")
+    return render(request, "Noroeste/crud_salta/agregarblogSalta.html")
 
 def editarblog(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
