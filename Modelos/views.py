@@ -12,7 +12,6 @@ def blogssalta(request):
 def leerblog(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
     img = blog.image
-    img = img.__str__()
     return render(request, "Noroeste/crud_salta/leerblog.html", {"blog": blog, "img": img})
 
 def agregarblog(request):
