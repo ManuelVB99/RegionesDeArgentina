@@ -7,10 +7,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("noroeste/", noroeste),
     path("noroeste/salta/", blogssalta),
-    path("noroeste/salta/agregarblogSalta/", agregarblog),
-    path('noroeste/salta/editarblog/<blogsalta_id>', editarblog),
-    path("noroeste/salta/borrarblog/<blogsalta_id>", borrarblog),
-    path("noroeste/salta/leerblog/<blogsalta_id>", leerblog)
+    path("noroeste/salta/agregarblogSalta/", agregarblogSalta),
+    path('noroeste/salta/editarblogSalta/<blogsalta_id>', editarblogSalta),
+    path("noroeste/salta/borrarblogSalta/<blogsalta_id>", borrarblogSalta),
+    path("noroeste/salta/leerblogSalta/<blogsalta_id>", leerblogSalta)
 
 
 ]

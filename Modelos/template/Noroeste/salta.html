@@ -9,9 +9,9 @@
     {% for blog in blogsalta %}
         <div style="padding: 10px">
             Título: {{blog.titulo}} - Subtítulo: {{blog.subtitulo}} - Autor: {{blog.autor}} - Fecha: {{blog.fecha}}<br>
-            <a href="/pages/noroeste/salta/leerblog/{{blog.id}}" class="btn btn-primary">Leer blog</a>
-            <a class="btn btn-warning" href="/pages/noroeste/salta/editarblog/{{blog.id}}">Edit</a>
-            <a href="/pages/noroeste/salta/borrarblog/{{blog.id}}" class="btn btn-danger">Delete</a>
+            <a href="/pages/noroeste/salta/leerblogSalta/{{blog.id}}" class="btn btn-primary">Leer blog</a>
+            <a class="btn btn-warning" href="/pages/noroeste/salta/editarblogSalta/{{blog.id}}">Edit</a>
+            <a href="/pages/noroeste/salta/borrarblogSalta/{{blog.id}}" class="btn btn-danger">Delete</a>
         </div>
         <br>
     {% endfor %}

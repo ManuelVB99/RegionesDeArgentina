@@ -9,12 +9,12 @@ def blogssalta(request):
     blogsalta = BlogsSalta.objects.all()
     return render(request, "Noroeste/salta.html", {"blogsalta" : blogsalta})
 
-def leerblog(request, blogsalta_id):
+def leerblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
     img = blog.image
-    return render(request, "Noroeste/crud_salta/leerblog.html", {"blog": blog, "img": img})
+    return render(request, "Noroeste/crud_salta/leerblogSalta.html", {"blog": blog, "img": img})
 
-def agregarblog(request):
+def agregarblogSalta(request):
     if request.method == 'POST':
         nuevoblog = BlogsSalta(titulo = request.POST['titulo'], subtitulo = request.POST['subtitulo'], cuerpo = request.POST['cuerpo'], autor = request.POST["autor"], fecha = request.POST["fecha"], image = request.FILES["image"])
         nuevoblog.save()
@@ -22,11 +22,11 @@ def agregarblog(request):
         return render(request, "Noroeste/salta.html", {"blogsalta": blogsalta})
     return render(request, "Noroeste/crud_salta/agregarblogSalta.html")
 
-def editarblog(request, blogsalta_id):
+def editarblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
 
     if request.method == 'POST':
-        formulario = editarblogsalta(request.POST)
+        formulario = editarblogsalta(request.POST, request.FILES)
 
         if formulario.is_valid():
             informacion = formulario.cleaned_data
@@ -40,10 +40,10 @@ def editarblog(request, blogsalta_id):
             blogsalta = BlogsSalta.objects.all()
             return render(request, "Noroeste/salta.html", {"blogsalta": blogsalta})
     else:
-        formulario = editarblogsalta(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha})
-    return render(request, "Noroeste/crud_salta/editarblog.html", {"formulario": formulario})
+        formulario = editarblogsalta(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
+    return render(request, "Noroeste/crud_salta/editarblogSalta.html", {"formulario": formulario})
 
-def borrarblog(request, blogsalta_id):
+def borrarblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
     blog.delete()
 
