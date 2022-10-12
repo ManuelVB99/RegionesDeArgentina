@@ -16,7 +16,13 @@ urlpatterns = [
     path("patagonia/rionegro/agregarblogRioNegro/", agregarblogRioNegro),
     path('patagonia/rionegro/editarblogRioNegro/<blogrionegro_id>', editarblogRioNegro),
     path("patagonia/rionegro/borrarblogRioNegro/<blogrionegro_id>", borrarblogRioNegro),
-    path("patagonia/rionegro/leerblogRioNegro/<blogrionegro_id>", leerblogRioNegro)
+    path("patagonia/rionegro/leerblogRioNegro/<blogrionegro_id>", leerblogRioNegro),
+    path("cuyo/", cuyo),
+    path("cuyo/mendoza/", blogsmendoza),
+    path("cuyo/mendoza/agregarblogMendoza/", agregarblogMendoza),
+    path('cuyo/mendoza/editarblogMendoza/<blogmendoza_id>', editarblogMendoza),
+    path("cuyo/mendoza/borrarblogMendoza/<blogmendoza_id>", borrarblogMendoza),
+    path("cuyo/mendoza/leerblogMendoza/<blogmendoza_id>", leerblogMendoza)
 
 
 ]
