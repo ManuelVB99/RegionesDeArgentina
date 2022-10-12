@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+{% block contenido %}
+<div class="flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #e3f2fd ; border-radius: 10px; position: relative; height: 800px">
+        <a class="btn btn-secondary" style="width: 150px; position: absolute; right: 5px" href="/pages/patagonia/">Volver</a>
+    {% for blog in blogrionegro %}
+        <div style="padding: 10px">
+            Título: {{blog.titulo}} - Subtítulo: {{blog.subtitulo}} - Autor: {{blog.autor}} - Fecha: {{blog.fecha}}<br>
+            <a href="/pages/patagonia/rionegro/leerblogRioNegro/{{blog.id}}" class="btn btn-primary">Leer blog</a>
+            <a class="btn btn-warning" href="/pages/patagonia/rionegro/editarblogRioNegro/{{blog.id}}">Edit</a>
+            <a href="/pages/patagonia/rionegro/borrarblogRioNegro/{{blog.id}}" class="btn btn-danger">Delete</a>
+        </div>
+        <br>
+    {% endfor %}
+        <div class="position-absolute bottom-0 start-50 translate-middle-x" style="padding: 20px">
+            <a class="btn btn-success" href="/pages/patagonia/rionegro/agregarblogRioNegro/">Agregar blog</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

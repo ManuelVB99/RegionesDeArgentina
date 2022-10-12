@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('cuerpo', models.CharField(max_length=300)),
                 ('autor', models.CharField(max_length=40)),
                 ('fecha', models.CharField(max_length=40)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='blogsalta')),
-            ],
-        ),
+                ('image', models.ImageField(blank=True, null=True, upload_to='blogsalta'))
+                    ], 
+            ),
     ]
