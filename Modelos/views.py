@@ -9,7 +9,10 @@ def patagonia(request):
     return render(request, "Patagonia/patagonia.html")    
 
 def cuyo(request):
-    return render(request, "Cuyo/cuyo.html")   
+    return render(request, "Cuyo/cuyo.html")
+
+def pampeana(request):
+    return render(request, "Pampeana/pampeana.html")
 
 def blogssalta(request):
     blogsalta = BlogsSalta.objects.all()
@@ -22,6 +25,10 @@ def blogsrionegro(request):
 def blogsmendoza(request):
     blogmendoza = BlogsMendoza.objects.all()
     return render(request, "Cuyo/mendoza.html", {"blogmendoza" : blogmendoza})
+
+def blogsbuenosaires(request):
+    blogbuenosaires = BlogsBuenosAires.objects.all()
+    return render(request, "Pampeana/buenosaires.html", {"blogbuenosaires" : blogbuenosaires})
 
 def leerblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
@@ -37,6 +44,11 @@ def leerblogMendoza(request, blogmendoza_id):
     blog = BlogsMendoza.objects.get(id = blogmendoza_id)
     img = blog.image
     return render(request, "Cuyo/crud_mendoza/leerblogMendoza.html", {"blog": blog, "img": img})
+
+def leerblogBA(request, blogBA_id):
+    blog = BlogsBuenosAires.objects.get(id = blogBA_id)
+    img = blog.image
+    return render(request, "Pampeana/crud_buenosaires/leerblogBA.html", {"img":img, "blog":blog})
 
 def agregarblogSalta(request):
     if request.method == 'POST':
@@ -61,6 +73,14 @@ def agregarblogMendoza(request):
         blogmendoza = BlogsMendoza.objects.all()
         return render(request, "Cuyo/mendoza.html", {"blogmendoza": blogmendoza})
     return render(request, "Cuyo/crud_mendoza/agregarblogMendoza.html")
+
+def agregarblogBA(request):
+    if request.method == "POST":
+        nuevoblog = BlogsBuenosAires(titulo = request.POST['titulo'], subtitulo = request.POST['subtitulo'], cuerpo = request.POST['cuerpo'], autor = request.POST["autor"], fecha = request.POST["fecha"], image = request.FILES["image"])
+        nuevoblog.save()
+        blogbuenosaires = BlogsBuenosAires.objects.all()
+        return render(request, "Pampeana/buenosaires.html", {"blogbuenosaires" : blogbuenosaires})
+    return render(request, "Pampeana/crud_buenosaires/agregarblogBA.html")
 
 def editarblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
@@ -126,6 +146,23 @@ def editarblogMendoza(request, blogmendoza_id):
         formulario = editarblogmendoza(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
     return render(request, "Cuyo/crud_mendoza/editarblogMendoza.html", {"formulario": formulario})
 
+def editarblogsBA(request, blogBA_id):
+    blog = BlogsBuenosAires.objects.get(id=blogBA_id)
+    if request.method == 'POST':
+        formulario = editarblogBA(request.POST, request.FILES)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            blog.titulo = informacion['titulo']
+            blog.subtitulo = informacion['subtitulo']
+            blog.cuerpo = informacion['cuerpo']
+            blog.autor = informacion["autor"]
+            blog.fecha = informacion["fecha"]
+            blog.image = informacion["image"]
+            blogbuenosaires = BlogsBuenosAires.objects.all()
+            return render(request, "Pampeana/buenosaires.html", {"blogbuenosaires": blogbuenosaires})
+    else:
+        formulario = editarblogBA(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
+    return render(request, "Pampeana/crud_buenosaires/editarblogsBA.html", {"formulario": formulario})
 
 def borrarblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
@@ -148,4 +185,10 @@ def borrarblogMendoza(request, blogmendoza_id):
     blogmendoza = BlogsMendoza.objects.all()
     return render(request, "Cuyo/mendoza.html", {"blogmendoza": blogmendoza})
 
+def borrarblogBA(request, blogBA_id):
+    blog = BlogsBuenosAires.objects.get(id = blogBA_id)
+    blog.delete()
+
+    blogbuenosaires = BlogsBuenosAires.objects.all()
+    return render(request, "Pampeana/buenosaires.html", {"blogbuenosaires" : blogbuenosaires})
 # Create your views here.

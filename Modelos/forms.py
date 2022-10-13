@@ -25,3 +25,11 @@ class editarblogmendoza(forms.Form):
     autor = forms.CharField(max_length=40)
     fecha = forms.CharField(max_length=40)
     image = forms.ImageField()
+
+class editarblogBA(forms.Form):
+    titulo = forms.CharField(max_length=60)
+    subtitulo = forms.CharField(max_length=100)
+    cuerpo = forms.CharField(widget= forms.Textarea(attrs={'height': '200px'}))
+    autor = forms.CharField(max_length=40)
+    fecha = forms.CharField(max_length=40)
+    image = forms.ImageField()
