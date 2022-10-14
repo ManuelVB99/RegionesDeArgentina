@@ -25,4 +25,5 @@ urlpatterns = [
     path("pages/", include("Modelos.urls"))
 ]
 
+handler404="ProyectoFinalCandoDiazVilela.views.error404"
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
