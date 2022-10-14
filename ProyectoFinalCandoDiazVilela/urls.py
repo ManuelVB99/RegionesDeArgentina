@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index),
-    path("pages/", include("Modelos.urls"))
+    path("pages/", include("Modelos.urls")),
+    path("aboutus/", aboutus)
 ]
 
 handler404="ProyectoFinalCandoDiazVilela.views.error404"

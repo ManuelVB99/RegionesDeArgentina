@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+{% block contenido %}
+<div class="flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="me-md-3 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden" style="border-radius: 10px; position: relative; height: 800px">
+        <a class="btn btn-secondary" style="width: 150px; position: absolute; right: 5px" href="http://127.0.0.1:8000/">Volver</a>
+        <div style="background-color: #e3f2fd; margin: 0px auto;border: 1px solid black; border-radius: 10px; height: 750px; width:80%">
+          <div class="position-absolute start-50 translate-middle-x" style="padding: 50px">
+            <h1>Acerca de nosotros</h1>
+          </div>
+          <div class="card-group" style="padding: 150px; height: 500px" >
+            <div class="card">
+              <div class="card-body" style="border: 1px solid black; background-color: pink">
+                <h4 class="card-title" style="padding: 20px">Manuel Vilela Blanco</h4>
+                <h6 class="card-text" style="">Encargado de realizar la región de Noroeste (y su provincia Salta), Login, Logout, Registro y por último página 404</h6>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body" style="border: 1px solid black; background-color: pink">
+                <h4 class="card-title" style="padding: 20px">Macarena Diaz</h4>
+                <h6 class="card-text" style="">Encargada de realizar la región de Cuyo y Patagonia (y sus respectivas provincias), Portal de User y por último página de mensaje</h6>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body" style="border: 1px solid black; background-color: pink">
+                <h4 class="card-title" style="padding: 20px">Manuel Cando</h4>
+                <h6 class="card-text" style="">Encargado de realizar la regió Pampeana (y su provincia Buenos Aires), colaborando con Login, Logout y página de mensaje</h6>
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,3 +5,6 @@ def index(request):
 
 def error404(request, exception):
     return render(request, "error404.html")
+
+def aboutus(request):
+    return render(request, "aboutus.html")
