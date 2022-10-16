@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from Modelos.models import *
 from Modelos.forms import *
+from django.contrib.auth.decorators import login_required
 
 def noroeste(request):
     return render(request, "Noroeste/noroeste.html")
@@ -50,6 +51,7 @@ def leerblogBA(request, blogBA_id):
     img = blog.image
     return render(request, "Pampeana/crud_buenosaires/leerblogBA.html", {"img":img, "blog":blog})
 
+@login_required
 def agregarblogSalta(request):
     if request.method == 'POST':
         nuevoblog = BlogsSalta(titulo = request.POST['titulo'], subtitulo = request.POST['subtitulo'], cuerpo = request.POST['cuerpo'], autor = request.POST["autor"], fecha = request.POST["fecha"], image = request.FILES["image"])
@@ -58,6 +60,7 @@ def agregarblogSalta(request):
         return render(request, "Noroeste/salta.html", {"blogsalta": blogsalta})
     return render(request, "Noroeste/crud_salta/agregarblogSalta.html")
 
+@login_required
 def agregarblogRioNegro(request):
     if request.method == 'POST':
         nuevoblog = BlogsRioNegro(titulo = request.POST['titulo'], subtitulo = request.POST['subtitulo'], cuerpo = request.POST['cuerpo'], autor = request.POST["autor"], fecha = request.POST["fecha"], image = request.FILES["image"])
@@ -66,6 +69,7 @@ def agregarblogRioNegro(request):
         return render(request, "Patagonia/rionegro.html", {"blogrionegro": blogrionegro})
     return render(request, "Patagonia/crud_rionegro/agregarblogRioNegro.html")
 
+@login_required
 def agregarblogMendoza(request):
     if request.method == 'POST':
         nuevoblog = BlogsMendoza(titulo = request.POST['titulo'], subtitulo = request.POST['subtitulo'], cuerpo = request.POST['cuerpo'], autor = request.POST["autor"], fecha = request.POST["fecha"], image = request.FILES["image"])
@@ -74,6 +78,7 @@ def agregarblogMendoza(request):
         return render(request, "Cuyo/mendoza.html", {"blogmendoza": blogmendoza})
     return render(request, "Cuyo/crud_mendoza/agregarblogMendoza.html")
 
+@login_required
 def agregarblogBA(request):
     if request.method == "POST":
         nuevoblog = BlogsBuenosAires(titulo = request.POST['titulo'], subtitulo = request.POST['subtitulo'], cuerpo = request.POST['cuerpo'], autor = request.POST["autor"], fecha = request.POST["fecha"], image = request.FILES["image"])
@@ -82,6 +87,7 @@ def agregarblogBA(request):
         return render(request, "Pampeana/buenosaires.html", {"blogbuenosaires" : blogbuenosaires})
     return render(request, "Pampeana/crud_buenosaires/agregarblogBA.html")
 
+@login_required
 def editarblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
 
@@ -103,7 +109,7 @@ def editarblogSalta(request, blogsalta_id):
         formulario = editarblogsalta(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
     return render(request, "Noroeste/crud_salta/editarblogSalta.html", {"formulario": formulario})
 
-
+@login_required
 def editarblogRioNegro(request, blogrionegro_id):
     blog = BlogsRioNegro.objects.get(id = blogrionegro_id)
 
@@ -125,6 +131,7 @@ def editarblogRioNegro(request, blogrionegro_id):
         formulario = editarblogrionegro(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
     return render(request, "Patagonia/crud_rionegro/editarblogRioNegro.html", {"formulario": formulario})
 
+@login_required
 def editarblogMendoza(request, blogmendoza_id):
     blog = BlogsMendoza.objects.get(id = blogmendoza_id)
 
@@ -146,6 +153,7 @@ def editarblogMendoza(request, blogmendoza_id):
         formulario = editarblogmendoza(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
     return render(request, "Cuyo/crud_mendoza/editarblogMendoza.html", {"formulario": formulario})
 
+@login_required
 def editarblogsBA(request, blogBA_id):
     blog = BlogsBuenosAires.objects.get(id=blogBA_id)
     if request.method == 'POST':
@@ -164,6 +172,7 @@ def editarblogsBA(request, blogBA_id):
         formulario = editarblogBA(initial={'titulo': blog.titulo, 'subtitulo': blog.subtitulo, 'cuerpo': blog.cuerpo, "autor": blog.autor, "fecha": blog.fecha, "image": None})
     return render(request, "Pampeana/crud_buenosaires/editarblogsBA.html", {"formulario": formulario})
 
+@login_required
 def borrarblogSalta(request, blogsalta_id):
     blog = BlogsSalta.objects.get(id = blogsalta_id)
     blog.delete()
@@ -171,6 +180,7 @@ def borrarblogSalta(request, blogsalta_id):
     blogsalta = BlogsSalta.objects.all()
     return render(request, "Noroeste/salta.html", {"blogsalta": blogsalta})
 
+@login_required
 def borrarblogRioNegro(request, blogrionegro_id):
     blog = BlogsRioNegro.objects.get(id = blogrionegro_id)
     blog.delete()
@@ -178,6 +188,7 @@ def borrarblogRioNegro(request, blogrionegro_id):
     blogrionegro = BlogsRioNegro.objects.all()
     return render(request, "Patagonia/rionegro.html", {"blogrionegro": blogrionegro})
 
+@login_required
 def borrarblogMendoza(request, blogmendoza_id):
     blog = BlogsMendoza.objects.get(id = blogmendoza_id)
     blog.delete()
@@ -185,6 +196,7 @@ def borrarblogMendoza(request, blogmendoza_id):
     blogmendoza = BlogsMendoza.objects.all()
     return render(request, "Cuyo/mendoza.html", {"blogmendoza": blogmendoza})
 
+@login_required
 def borrarblogBA(request, blogBA_id):
     blog = BlogsBuenosAires.objects.get(id = blogBA_id)
     blog.delete()

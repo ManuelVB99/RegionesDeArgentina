@@ -18,13 +18,16 @@ from django.urls import path, include
 from ProyectoFinalCandoDiazVilela.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index),
     path("pages/", include("Modelos.urls")),
     path("aboutus/", aboutus),
-    path("login/", login_request)
+    path("login/", login_request),
+    path('logout/', LogoutView.as_view(template_name = 'index.html'), name="Logout"),
+    path("registro/", registro)
 ]
 
 handler404="ProyectoFinalCandoDiazVilela.views.error404"

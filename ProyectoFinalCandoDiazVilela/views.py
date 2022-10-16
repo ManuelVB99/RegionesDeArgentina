@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from Modelos.forms import registrousuario
 
 def index(request):
     return render(request, "index.html")
@@ -30,3 +31,15 @@ def login_request(request):
             return render(request, "login.html", {'form': form})
     form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
+def registro(request):
+    form = registrousuario(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect("/login/")
+        else:
+            return render(request, "registro.html", {'form': form})
+
+    form = registrousuario()
+    return render(request, "registro.html", {'form': form})
