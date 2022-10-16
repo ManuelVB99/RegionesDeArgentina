@@ -33,5 +33,7 @@ urlpatterns = [
     path("pampeana/buenosaires/borrarblogBA/<blogBA_id>/", borrarblogBA),
     path("pampeana/buenosaires/editarblogsBA/<blogBA_id>/", editarblogsBA),
 
+    path("editarperfil/", editarperfil)
+
 
 ]

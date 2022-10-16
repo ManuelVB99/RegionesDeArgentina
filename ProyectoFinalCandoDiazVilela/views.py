@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from Modelos.forms import registrousuario
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, "index.html")
@@ -43,3 +44,23 @@ def registro(request):
 
     form = registrousuario()
     return render(request, "registro.html", {'form': form})
+
+
+@login_required
+def editarperfil(request):
+    usuario = request.user
+    user_info = User.objects.get(id = usuario.id)
+    if request.method == "POST":
+        form = UserEditForm(request.POST, instance = usuario)
+        if form.is_valid():
+            user_info.username = form.cleaned_data.get('username')
+            user_info.email = form.cleaned_data.get('email')
+            user_info.first_name = form.cleaned_data.get('first_name')
+            user_info.last_name = form.cleaned_data.get('last_name')
+            user_info.save()
+            return render(request, "editarperfil.html")
+        else:
+            return render(request, "index.html", {'form': form})
+    else:
+        form = UserEditForm(initial={'email': usuario.email, 'username': usuario.username, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
+    return render(request, "editarperfil.html", {'form': form, 'usuario': usuario})
