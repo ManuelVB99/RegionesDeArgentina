@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index),
     path("pages/", include("Modelos.urls")),
-    path("aboutus/", aboutus)
+    path("aboutus/", aboutus),
+    path("login/", login_request)
 ]
 
 handler404="ProyectoFinalCandoDiazVilela.views.error404"
