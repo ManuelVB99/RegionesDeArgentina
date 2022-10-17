@@ -219,7 +219,7 @@ def editarperfil(request):
             user_info.first_name = form.cleaned_data.get('first_name')
             user_info.last_name = form.cleaned_data.get('last_name')
             user_info.save()
-            return render(request, "editarperfil.html")
+            return render(request, "index.html")
         else:
             return render(request, "index.html", {'form': form})
     else:

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login, logout, authenticate
-from Modelos.forms import registrousuario
+from Modelos.forms import registrousuario, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -51,16 +51,39 @@ def editarperfil(request):
     usuario = request.user
     user_info = User.objects.get(id = usuario.id)
     if request.method == "POST":
-        form = UserEditForm(request.POST, instance = usuario)
+        form = UserEditForm(request.POST) #instance = usuario)
         if form.is_valid():
             user_info.username = form.cleaned_data.get('username')
             user_info.email = form.cleaned_data.get('email')
             user_info.first_name = form.cleaned_data.get('first_name')
             user_info.last_name = form.cleaned_data.get('last_name')
             user_info.save()
-            return render(request, "editarperfil.html")
+            return render(request, "index.html")
         else:
             return render(request, "index.html", {'form': form})
     else:
         form = UserEditForm(initial={'email': usuario.email, 'username': usuario.username, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
-    return render(request, "editarperfil.html", {'form': form, 'usuario': usuario})
+    return render(request, "perfil/editarperfil.html", {'form': form, 'usuario': usuario})
+
+@login_required
+def cambiarpassword(request):
+    usuario = request.user
+    if request.method == 'POST':
+        #form = PasswordChangeForm(data = request.POST, user = usuario)
+        form = ChangePasswordForm(data = request.POST, user = usuario)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return render(request, 'index.html')
+        else:
+            #form = PasswordChangeForm(request.user)
+            form = ChangePasswordForm(data = request.POST, user = usuario)
+        return render(request, 'cambiarpassword.html', {'form': form, 'usuario': usuario})
+
+@login_required
+def perfilView(request):
+    #usuario = request.user
+    #user_info = User.objects.get(id = usuario.id)
+    #print(usuario)
+    return render(request, 'perfil.html')
+
