@@ -31,23 +31,23 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/pages/patagonia">Patagonia</a>
                     </li>
-                    <li class="nav-item" style="position: absolute; right: 100px">
-                        <a class="nav-link active" aria-current="page" href="/registro/">Registro</a>
-                    </li>
                     {% if not request.user.is_authenticated %}
                     <li class="nav-item" style="position: absolute; right: 200px">
                         <a class="nav-link active" aria-current="page" href="/login/">Login</a>
                     </li>
+                    <li class="nav-item" style="position: absolute; right: 100px">
+                        <a class="nav-link active" aria-current="page" href="/registro/">Registro</a>
+                    </li>
                     {% endif %}
 
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item" style="position: absolute; right: 200px">
-                        <a class="nav-link" aria-current="page" href="">{{user.username}}</a>
+                    <li class="nav-item" style="position: absolute; right: 170px">
+                        <a class="nav-link" aria-current="page" href="/perfil/">{{user.username}}</a>
                     </li>
-                    {% endif %}
-                    <li class="nav-item" style="position: absolute; right: 20px">
+                    <li class="nav-item" style="position: absolute; right: 100px">
                         <a class="nav-link active" aria-current="page" href="/logout/">Salir</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

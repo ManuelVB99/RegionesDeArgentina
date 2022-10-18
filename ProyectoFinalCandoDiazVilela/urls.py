@@ -27,7 +27,11 @@ urlpatterns = [
     path("aboutus/", aboutus),
     path("login/", login_request),
     path('logout/', LogoutView.as_view(template_name = 'index.html'), name="Logout"),
-    path("registro/", registro)
+    path("registro/", registro),
+    path("perfil/", perfilView),
+    path("perfil/editarperfil/", editarperfil),
+    path("perfil/cambiarpassword/", cambiarpassword),
+    path("perfil/cambiaravatar/", agregaravatar),
 ]
 
 handler404="ProyectoFinalCandoDiazVilela.views.error404"
