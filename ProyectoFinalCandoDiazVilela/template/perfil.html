@@ -10,10 +10,11 @@
           <div class="position-absolute start-50 translate-middle-x" style="padding: 200px">
             <ul>
                 <h1> INFORMACIÓN DEL USUARIO <br><br></h1>
-                <li> Usuario: {{ user.username }} </li>
-                <li>Mail: {{ user.email }} </li>
-                <li>Nombre: {{ user.first_name }} </li>
-                <li>Apellido: {{ user.last_name }} </li>
+                Usuario: {{ user.username }}<br>
+                Mail: {{ user.email }}<br>
+                Nombre: {{ user.first_name }}<br>
+                Apellido: {{ user.last_name }}<br>
+                <img src="{{ avatar }}" width="100px">
             </ul>
             <a class="btn btn-success" style="text-decoration: none; color: white" href="/perfil/editarperfil/"> Editar Perfil </a>
             <a class="btn btn-success" style="text-decoration: none; color: white" href="/perfil/cambiaravatar/"> Cambiar imagen de perfil </a>
