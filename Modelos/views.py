@@ -207,46 +207,4 @@ def borrarblogBA(request, blogBA_id):
     blogbuenosaires = BlogsBuenosAires.objects.all()
     return render(request, "Pampeana/buenosaires.html", {"blogbuenosaires" : blogbuenosaires})
 
-@login_required
-def editarperfil(request):
-    usuario = request.user
-    user_info = User.objects.get(id = usuario.id)
-    if request.method == "POST":
-        form = UserEditForm(request.POST, instance = usuario)
-        if form.is_valid():
-            user_info.username = form.cleaned_data.get('username')
-            user_info.email = form.cleaned_data.get('email')
-            user_info.first_name = form.cleaned_data.get('first_name')
-            user_info.last_name = form.cleaned_data.get('last_name')
-            user_info.save()
-            avatar = Avatar.objects.filter(user = request.user.id)
-            return render(request, 'index.html', {'avatar': avatar[0].image.url})
-        else:
-            avatar = Avatar.objects.filter(user = request.user.id)
-            return render(request, 'index.html', {'avatar': avatar[0].image.url})
-    else:
-        form = UserEditForm(initial={'email': usuario.email, 'username': usuario.username, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
-    return render(request, "editarperfil.html", {'form': form, 'usuario': usuario})
-
-def agregaravatar(request):
-    if request.method == 'POST':
-        form = AvatarFormulario(request.POST, request.FILE)
-        if form.is_valid():
-            user = User.objects.get(username = request.user)
-            avatar = Avatar(user = user, image = form.cleaned_data['avatar'], id= request.user.id)
-            avatar.save()
-            avatar = Avatar.objects.filter(user = request.user.id)
-            return render(Request, 'index.html', {'avatar': avatar[0].image.url})
-    else:
-        try:
-            avatar = Avatar.objects.filter(user = request.user.id)
-            #return render(Request, 'index.html', {'avatar': avatar[0].image.url})
-            form = AvatarFormulario()
-        except:
-            form = AvatarFormulario()
-    return render(request, 'agregaravatar.html', {'form': form})
-
-
-
-
 # Create your views here.

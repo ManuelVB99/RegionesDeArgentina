@@ -1,8 +1,5 @@
 from django.urls import path
 from Modelos.views import *
-from django.contrib.auth.views import LogoutView
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path("noroeste/", noroeste),
@@ -32,8 +29,6 @@ urlpatterns = [
     path("pampeana/buenosaires/leerblogBA/<blogBA_id>/", leerblogBA),
     path("pampeana/buenosaires/borrarblogBA/<blogBA_id>/", borrarblogBA),
     path("pampeana/buenosaires/editarblogsBA/<blogBA_id>/", editarblogsBA),
-
-    path("editarperfil/", editarperfil)
 
 
 ]
