@@ -56,7 +56,7 @@ class UserEditForm(UserChangeForm):
         fields = ['username', 'email', 'first_name', 'last_name']#, 'password']
         help_texts = {k:"" for k in fields}
 
-class PasswordChangeForm(PasswordChangeForm):
+class ChangePasswordForm(PasswordChangeForm):
     old_password = forms.CharField(label ="", widget= forms.PasswordInput(attrs={'placeholder': "Contraseña anterior"}))
     new_password1 = forms.CharField(label ="", widget= forms.PasswordInput(attrs={'placeholder': "Contraseña nueva"}))
     new_password2 = forms.CharField(label ="", widget= forms.PasswordInput(attrs={'placeholder': "Confirmar contraseña nueva"}))

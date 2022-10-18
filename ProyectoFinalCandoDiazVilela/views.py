@@ -4,16 +4,16 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from Modelos.forms import registrousuario, AvatarFormulario 
+from Modelos.forms import registrousuario, AvatarFormulario, UserEditForm, ChangePasswordForm
 from Modelos.models import Avatar
 
 def index(request):
-    avatar = Avatar.objects.filter(user = request.user.id)
-    try:
-        avatar = avatar[0].image.url
-    except:
-        avatar = None
-    return render(request, 'index.html', {'avatar': avatar})
+    #avatar = Avatar.objects.filter(user = request.user.id)
+    #try:
+    #    avatar = avatar[0].image.url
+    #except:
+    #    avatar = None
+    return render(request, 'index.html')
 
 def error404(request, exception):
     return render(request, "error404.html")
@@ -84,7 +84,7 @@ def editarperfil(request):
             return render(request, "index.html", {'form': form, 'avatar': avatar[0].image.url})
     else:
         form = UserEditForm(initial={'email': usuario.email, 'username': usuario.username, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
-    return render(request, "perfil/editarperfil.html", {'form': form, 'usuario': usuario})
+    return render(request, "editarperfil.html", {'form': form, 'usuario': usuario})
 
 @login_required
 def cambiarpassword(request):
