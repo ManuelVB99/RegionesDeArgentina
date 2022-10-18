@@ -31,6 +31,7 @@ urlpatterns = [
     path("perfil/", perfilView),
     path("perfil/editarperfil/", editarperfil),
     path("perfil/cambiarpassword/", cambiarpassword),
+    path("perfil/cambiaravatar/", agregaravatar),
 ]
 
 handler404="ProyectoFinalCandoDiazVilela.views.error404"

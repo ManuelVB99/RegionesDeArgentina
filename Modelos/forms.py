@@ -61,7 +61,10 @@ class PasswordChangeForm(PasswordChangeForm):
     new_password1 = forms.CharField(label ="", widget= forms.PasswordInput(attrs={'placeholder': "Contraseña nueva"}))
     new_password2 = forms.CharField(label ="", widget= forms.PasswordInput(attrs={'placeholder': "Confirmar contraseña nueva"}))
 
-     class Meta:
+    class Meta:
         model = User
         fields = ['old_password', 'new_password1', 'new_password2']
         help_texts = {k:"" for k in fields}
+
+class AvatarFormulario(forms.Form):
+    avatar = forms.ImageField()
