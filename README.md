@@ -1,4 +1,4 @@
-# ProyectoFinalCandoDiazVilela
+# Regiones Argentina
 
 En este proyecto final realizamos un blog donde se puede ver experiencias de los usuarios en una de las provincias de cada región (excepto Nordeste). 
 
